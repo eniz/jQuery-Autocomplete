@@ -145,7 +145,6 @@
     };
 
     Autocomplete.formatGroup = function (suggestion, category) {
-       // Do not replace anything if there current value is empty
        return '<div class="autocomplete-group"><strong>' + category + '</strong></div>';
     };
 

@@ -67,6 +67,7 @@
                 deferRequestBy: 0,
                 params: {},
                 formatResult: Autocomplete.formatResult,
+                formatGroup: Autocomplete.formatGroup,
                 delimiter: null,
                 zIndex: 9999,
                 type: 'GET',
@@ -131,7 +132,7 @@
         if (!currentValue) {
             return suggestion.value;
         }
-        
+
         var pattern = '(' + utils.escapeRegExChars(currentValue) + ')';
 
         return suggestion.value
@@ -141,6 +142,10 @@
             .replace(/>/g, '&gt;')
             .replace(/"/g, '&quot;')
             .replace(/&lt;(\/?strong)&gt;/g, '<$1>');
+    };
+
+    Autocomplete.formatGroup = function (suggestion, category) {
+       return '<div class="autocomplete-group"><strong>' + category + '</strong></div>';
     };
 
     Autocomplete.prototype = {
@@ -225,7 +230,7 @@
         onBlur: function () {
             this.enableKillerFn();
         },
-        
+
         abortAjax: function () {
             var that = this;
             if (that.currentRequest) {
@@ -354,8 +359,8 @@
             that.stopKillSuggestions();
             that.intervalId = window.setInterval(function () {
                 if (that.visible) {
-                    // No need to restore value when 
-                    // preserveInput === true, 
+                    // No need to restore value when
+                    // preserveInput === true,
                     // because we did not change it
                     if (!that.options.preserveInput) {
                         that.el.val(that.currentValue);
@@ -363,7 +368,7 @@
 
                     that.hide();
                 }
-                
+
                 that.stopKillSuggestions();
             }, 50);
         },
