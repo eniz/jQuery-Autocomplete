@@ -667,7 +667,7 @@
                 beforeRender = options.beforeRender,
                 html = '',
                 category,
-                formatGroup = typeof options.formatGroup == 'function' ? options.formatGroup : function (suggestion, index) {
+                formatGroup = function (suggestion, index) {
                         var currentCategory = suggestion.data[groupBy];
 
                         if (category === currentCategory){
