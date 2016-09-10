@@ -145,17 +145,8 @@
     };
 
     Autocomplete.formatGroup = function (suggestion, category) {
-        var icon = function(title, className, category) {
-          return $('<div class="category ' + category + '">')
-            .append('<em class="' + className + '">')
-            .append($('<span>').html('<span>' + title + '</span>'));
-        };
-
-        var categoryIcons = {
-          hotel: icon(gettext('Hotels'), 'icon-hotels', 'hotel'),
-          destination: icon(gettext('Destinations'), 'icon-destinations', 'destination')
-        };
-       return '<div class="autocomplete-group"><strong>' + categoryIcons[category] + '</strong></div>';
+       // Do not replace anything if there current value is empty
+       return '<div class="autocomplete-group"><strong>' + category + '</strong></div>';
     };
 
     Autocomplete.prototype = {
